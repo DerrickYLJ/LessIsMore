@@ -17,7 +17,7 @@
 *Figure 3: Efficiency-accuracy tradeoff comparison on AIME-24 using GQA-based LLama-3.1-8B. Each point represents the end-to-end average per-token decoding latency across the corresponding average generation length. LessIsMore (orange squares) consistently achieves higher accuracy than TidalDecode (blue circles) while maintaining lower latency across all token budgets (1K, 2K, 4K, 6K). The closer to the top-left corner, the better the method performs. Full Attention baseline (triangle) provides the accuracy upper bound but with higher computational cost.*
 
 ### Latency
-![Figure 4: Generation Length Comparison](assets/e2e_efficiency.pdf)
+![Figure 4: Generation Length Comparison](assets/gen_table.png)
 
 *Figure 4: The AIME-24 accuracy followed by corresponding average reasoning length (in K) of different approaches on Qwen3-8B. The highest accuracy and the lowest generation length of each column are in bold, excluding the Full Attention row.*
 
@@ -25,7 +25,7 @@
 ## Installation
 1. Clone the submodules
 ```
-git clone https://github.com/DerrickYLJ/TidalDecode.git
+git clone https://github.com/DerrickYLJ/LessIsMore.git
 git submodule update --init --recursive
 ```
 2. Install dependency libraries
@@ -66,10 +66,10 @@ To reproduce the end-to-end efficiency results, please execute:
 cd scripts
 bash bench_efficiency_e2e.sh
 ```
-
-
-<!-- ## Reference
+## Citation
+```
 ```
 
-``` -->
+## Related Projects
+**LessIsMore** adopts the code snippets from [TidalDecode](https://github.com/DerrickYLJ/TidalDecode) and [Quest](https://github.com/mit-han-lab/Quest). It uses the script from [LIMO](https://github.com/GAIR-NLP/LIMO) and [SGLang](https://github.com/sgl-project/sglang) for reasoning evaluation. Ours kernels and end-to-end system are implemented based on [FlashInfer](https://github.com/flashinfer-ai/flashinfer). Thanks for all amazing works from the community!
 

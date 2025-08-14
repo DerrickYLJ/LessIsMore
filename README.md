@@ -1,5 +1,5 @@
 # Less Is More: Training-Free Sparse Attention with Global Locality for Efficient Reasoning
-[[paper]()] 
+[[paper](https://arxiv.org/pdf/2508.07101)] 
 ## TL;DR
 **LessIsMore** is a novel sparse attention mechanism that dramatically improves the efficiency of large reasoning models without sacrificing accuracy. The key insight is that existing sparse attention methods fail on reasoning tasks because they make localized token selection decisions for each attention head separately, leading to accumulated errors over long reasoning sequences. Instead, LessIsMore leverages two key observations: (1) attention heads in reasoning tasks show significant overlap in which tokens they find important (spatial locality), and (2) recently generated tokens consistently receive high attention across multiple future steps (recency locality). 
 
@@ -54,7 +54,7 @@ bash setup.sh
 ## Performance Evaluation
 Run reasoning tasks by submitting a slurm job:
 ```
-sbatch experiment/reasoning/eun_eval_slurm.sh
+sbatch experiment/reasoning/run_eval_slurm.sh
 ```
 
 

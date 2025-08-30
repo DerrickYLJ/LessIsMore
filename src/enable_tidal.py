@@ -38,8 +38,6 @@ def enable_tidal(
                 attn_type,
                 sparse_layer_start,
                 correction_layer,
-                # attention_sink,
-                # lim_ratio,
             )
     elif attn_type == "lim":
         print(f"LessIsMore Enabled: attention_sink: {attention_sink}")
@@ -63,7 +61,6 @@ def enable_tidal(
                 lim_ratio,
             )
         elif "qwen" in model_type:
-            # currently support qwen family
             from src.tidal_build.modify_qwen3_lim import (
                 enable_qwen_tidal_attention,
             )

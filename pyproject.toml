@@ -1,49 +1,57 @@
 [build-system]
-requires = ["setuptools", "wheel", "packaging"]
+requires = ["setuptools>=68", "wheel", "packaging"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "tidal"
 version = "0.0.1"
+description = "Less Is More: Training-Free Sparse Attention with Global Locality"
+readme = "README.md"
+requires-python = ">=3.10,<3.13"
+license = { text = "Apache-2.0" }
 
 dependencies = [
-    "accelerate==0.26.0",
-    "DataProperty==1.0.1",
-    "datasets==2.14.5",
-    "pyarrow>=14.0.1",
-    "evaluate==0.4.0",
-    "exceptiongroup==1.1.3",
-    "fastapi==0.104.1",
-    "fschat[model_worker,webui]",
-    "ffmpy==0.3.1",
-    "fsspec==2023.6.0",
-    "ftfy==6.1.3",
-    "huggingface-hub>=0.23.2,<1.0.0", 
-    "lm_eval==0.3.0",
-    "numpy==1.26.0",
-    "protobuf==4.24.4",
-    "pybind11==2.11.1",
-    "scikit-learn==1.3.1",
-    "scipy==1.11.3",
+    # Core runtime
+    "torch>=2.1,<2.6",                          # SDPA required; Flex Attention optional on >=2.5
+    "transformers>=4.52,<4.53",                 # Uses flex_attention, hub kernels, new kwargs
+    "tokenizers>=0.21,<0.22",
+    "numpy>=1.24,<2",
+    "tqdm>=4.66",
     "sentencepiece>=0.1.99",
-    "torch==2.1.2",
-    "tqdm==4.66.1",
-    "tqdm-multiprocess==0.0.11",
-    "tokenizers==0.21.2",  
-    "transformers==4.52.4", 
-    "triton==2.1.0", 
-    "zstandard==0.21.0",
-    "packaging==24.0",
-    "ninja==1.11.1.1",
-    "jieba==0.42.1",
-    "fuzzywuzzy==0.18.0",
-    "rouge==1.0.1",
-    "pytest==8.2.2",
-    "textual==0.68.0",
-    "latex2sympy2",
-    "word2number",
+    "huggingface-hub>=0.23,<1",
+    "fsspec>=2023.6.0",
 ]
 
+[project.optional-dependencies]
+experiments = [
+    # Evaluation and scripts
+    "datasets>=2.14",
+    "pyarrow>=14",
+    "evaluate>=0.4",
+    "matplotlib>=3.7",
+    "regex>=2023.10.3",
+    "absl-py>=1.4",
+    "sympy>=1.12",
+    "latex2sympy2>=1.0.1",
+    "word2number>=1.1",
+    "fuzzywuzzy>=0.18.0",
+    "rouge>=1.0.1",
+    "jieba>=0.42.1",
+    "scikit-learn>=1.3",
+    "scipy>=1.11",
+]
+flash = [
+    # Optional FlashAttention 2 (match README install flow)
+    "flash-attn==2.3.0",
+    "ninja>=1.11",
+]
+dev = [
+    "pytest>=8.2",
+    "packaging>=24.0",
+]
+
+[tool.setuptools]
+package-dir = {"" = "."}
 
 [tool.setuptools.packages.find]
 where = ["."]
